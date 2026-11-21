@@ -1,0 +1,37 @@
+{
+  "id": "sample-rear-end",
+  "title": "Rear-end collision: sudden stop, tailgating, phone use",
+  "description": "Driver A braked hard for a dog crossing the road. Driver B, following closely while looking at a phone, rear-ended A. A's registration had expired.",
+  "scene": {
+    "jurisdiction": "CA",
+    "location": "El Camino Real near Oak Ave",
+    "date": "2026-09-14",
+    "road_surface": "dry",
+    "lighting": "daylight",
+    "collision_type": "rear_end",
+    "traffic_control": "None"
+  },
+  "parties": [
+    {"id": "A", "label": "Driver A (lead)", "vehicle": "2017 Toyota Camry", "speed_mph": 35, "speed_limit_mph": 35,
+     "had_right_of_way": true, "visibility": "good", "evasive_action_taken": true},
+    {"id": "B", "label": "Driver B (following)", "vehicle": "2022 Tesla Model 3", "speed_mph": 35, "speed_limit_mph": 35,
+     "distance_to_conflict_ft": 30, "had_right_of_way": false, "visibility": "good", "evasive_action_taken": false}
+  ],
+  "actions": [
+    {"id": "a1", "party_id": "A", "code": "NO_LICENSE_INSURANCE",
+     "description": "Vehicle registration expired three months earlier.",
+     "evidence_ids": ["e2"], "evidence_confidence": 1.0},
+    {"id": "b1", "party_id": "B", "code": "FOLLOWING_TOO_CLOSELY",
+     "description": "Approx. 0.6 s headway at 35 mph per dashcam frame analysis.",
+     "evidence_ids": ["e1", "e2"], "evidence_confidence": 0.85},
+    {"id": "b2", "party_id": "B", "code": "DISTRACTED", "magnitude": 3,
+     "description": "Phone records show an outgoing text 4 seconds before impact.",
+     "evidence_ids": ["e3"], "evidence_confidence": 0.8}
+  ],
+  "evidence": [
+    {"id": "e1", "kind": "dashcam", "source": "Driver A rear dashcam", "summary": "B's vehicle very close behind for 10+ s before the stop.", "reliability": 0.85},
+    {"id": "e2", "kind": "police_report", "source": "CHP report", "summary": "Notes short following distance; notes A's expired registration.", "reliability": 0.8},
+    {"id": "e3", "kind": "other", "source": "Phone records (subpoenaed)", "summary": "Text sent 4 s before the collision time.", "reliability": 0.85}
+  ],
+  "conflicts": []
+}

@@ -1,0 +1,8 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.8
+python-multipart>=0.0.9
+anthropic>=2.0
+opencv-python-headless>=4.10  # optional: dashcam video frame sampling
+pytest>=8
+httpx>=0.27

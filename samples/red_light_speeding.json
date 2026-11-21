@@ -1,0 +1,36 @@
+{
+  "id": "sample-red-light",
+  "title": "Intersection collision: red light vs. speeding",
+  "description": "Driver A entered the intersection of Main St and 5th Ave against a red signal. Driver B, northbound on a green signal, was travelling about 55 mph in a 40 mph zone and struck A's passenger side.",
+  "scene": {
+    "jurisdiction": "TX",
+    "location": "Main St & 5th Ave",
+    "date": "2026-10-03",
+    "road_surface": "dry",
+    "lighting": "daylight",
+    "collision_type": "angle",
+    "traffic_control": "Traffic signal"
+  },
+  "parties": [
+    {"id": "A", "label": "Driver A", "vehicle": "2019 Honda Civic", "speed_mph": 20, "speed_limit_mph": 30,
+     "distance_to_conflict_ft": 40, "had_right_of_way": false, "visibility": "good", "evasive_action_taken": false},
+    {"id": "B", "label": "Driver B", "vehicle": "2021 Ford F-150", "speed_mph": 55, "speed_limit_mph": 40,
+     "distance_to_conflict_ft": 150, "had_right_of_way": true, "visibility": "good", "evasive_action_taken": true}
+  ],
+  "actions": [
+    {"id": "a1", "party_id": "A", "code": "RED_LIGHT",
+     "description": "Entered the intersection about 2 seconds after the signal turned red.",
+     "evidence_ids": ["e1", "e2", "e3"], "evidence_confidence": 0.95,
+     "causation": {"initiated_chain": true}},
+    {"id": "b1", "party_id": "B", "code": "SPEEDING",
+     "description": "Event data recorder shows 55 mph five seconds before impact in a posted 40 mph zone.",
+     "evidence_ids": ["e4"], "evidence_confidence": 0.9}
+  ],
+  "evidence": [
+    {"id": "e1", "kind": "dashcam", "source": "Driver B dashcam", "summary": "Signal for A's approach visibly red as A enters.", "reliability": 0.9},
+    {"id": "e2", "kind": "police_report", "source": "Officer report #4471", "summary": "Cites Driver A for disregarding a red signal.", "reliability": 0.8},
+    {"id": "e3", "kind": "witness", "source": "Pedestrian witness", "summary": "A 'ran the light'; B 'was going fast'.", "reliability": 0.6},
+    {"id": "e4", "kind": "telemetry", "source": "Driver B event data recorder", "summary": "Pre-crash speed 55 mph, brake applied 0.8 s before impact.", "reliability": 0.95}
+  ],
+  "conflicts": []
+}

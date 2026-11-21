@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FCH Fault Analysis</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">◆</span>
+    <div>
+      <h1>Fault Contribution Hierarchy</h1>
+      <p class="sub">Evidence-based accident fault estimation</p>
+    </div>
+  </div>
+  <nav class="steps" aria-label="Workflow">
+    <a href="#submit" class="step" data-step="submit">1 · Evidence</a>
+    <a href="#review" class="step" data-step="review">2 · Review facts</a>
+    <a href="#report" class="step" data-step="report">3 · Report</a>
+  </nav>
+</header>
+
+<main>
+  <!-- STEP 1 -->
+  <section id="submit" class="panel">
+    <div class="panel-head">
+      <h2>1 · Submit evidence</h2>
+      <p class="muted">Upload photos, dashcam video and written accounts. Facts are extracted automatically — extraction never assigns fault. Or start from a sample case.</p>
+    </div>
+
+    <div class="samples" id="samples"></div>
+
+    <form id="extract-form" class="grid2">
+      <label>Jurisdiction
+        <select name="jurisdiction" id="jur-select"></select>
+      </label>
+      <label>Photos, dashcam video, .txt files
+        <input type="file" name="files" multiple accept="image/jpeg,image/png,image/webp,image/gif,video/*,.txt">
+      </label>
+      <label class="span2">Accident description
+        <textarea name="description" rows="3" placeholder="What happened, in your own words"></textarea>
+      </label>
+      <label>Police report
+        <textarea name="police_report" rows="5" placeholder="Paste the narrative section"></textarea>
+      </label>
+      <label>Witness statements
+        <textarea name="witness_statements" rows="5"></textarea>
+      </label>
+      <label class="span2">Driver statements
+        <textarea name="driver_statements" rows="3"></textarea>
+      </label>
+      <div class="span2 actions-row">
+        <button type="submit" class="primary" id="extract-btn">Extract facts</button>
+        <button type="button" id="blank-btn">Start a blank case</button>
+        <span id="extract-status" class="muted" role="status"></span>
+      </div>
+    </form>
+  </section>
+
+  <!-- STEP 2 -->
+  <section id="review" class="panel" hidden>
+    <div class="panel-head">
+      <h2>2 · Review case facts</h2>
+      <p class="muted">A human reviewer confirms or corrects every fact before scoring. Leave unknown values blank — the engine will not guess them.</p>
+    </div>
+    <div id="editor"></div>
+    <div class="actions-row">
+      <button class="primary" id="assess-btn">Run FCH assessment</button>
+      <button id="export-btn">Download case JSON</button>
+      <span id="assess-status" class="muted" role="status"></span>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section id="report" class="panel" hidden>
+    <div id="report-body"></div>
+  </section>
+</main>
+
+<div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

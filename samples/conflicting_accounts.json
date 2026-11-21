@@ -1,0 +1,32 @@
+{
+  "id": "sample-conflict",
+  "title": "Disputed signal: each driver says the other ran the red",
+  "description": "Two vehicles collided at a signalized intersection at night. Each driver states the other had the red light. No video, no independent witness, no speed data.",
+  "scene": {
+    "jurisdiction": "FL",
+    "location": "Bay Blvd & 12th St",
+    "date": "2026-07-30",
+    "road_surface": "wet",
+    "lighting": "dark_lit",
+    "collision_type": "angle",
+    "traffic_control": "Traffic signal"
+  },
+  "parties": [
+    {"id": "A", "label": "Driver A", "vehicle": "2018 Kia Optima"},
+    {"id": "B", "label": "Driver B", "vehicle": "2016 Chevrolet Malibu"}
+  ],
+  "actions": [
+    {"id": "a1", "party_id": "A", "code": "RED_LIGHT", "description": "Alleged by Driver B.",
+     "evidence_ids": ["e2"], "evidence_confidence": 0.5},
+    {"id": "b1", "party_id": "B", "code": "RED_LIGHT", "description": "Alleged by Driver A.",
+     "evidence_ids": ["e1"], "evidence_confidence": 0.5}
+  ],
+  "evidence": [
+    {"id": "e1", "kind": "driver_statement", "source": "Driver A statement", "summary": "'My light was green, B ran the red.'", "reliability": 0.4},
+    {"id": "e2", "kind": "driver_statement", "source": "Driver B statement", "summary": "'I had the green, A came through the red.'", "reliability": 0.4}
+  ],
+  "conflicts": [
+    {"description": "Driver statements directly contradict each other on which signal was red.",
+     "evidence_ids": ["e1", "e2"], "party_ids": ["A", "B"]}
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "id": "sample-left-turn",
+  "title": "Left turn across an inattentive oncoming driver",
+  "description": "Driver A turned left across oncoming traffic without adequate gap. Driver B, oncoming at the speed limit, had a clear view and roughly 260 ft but never braked.",
+  "scene": {
+    "jurisdiction": "NC",
+    "location": "US-70 at Elm St",
+    "date": "2026-08-22",
+    "road_surface": "dry",
+    "lighting": "daylight",
+    "collision_type": "left_turn",
+    "traffic_control": "Permissive green"
+  },
+  "parties": [
+    {"id": "A", "label": "Driver A (turning)", "vehicle": "2015 Nissan Altima", "speed_mph": 12,
+     "distance_to_conflict_ft": 25, "had_right_of_way": false, "visibility": "good", "evasive_action_taken": false},
+    {"id": "B", "label": "Driver B (oncoming)", "vehicle": "2020 Jeep Cherokee", "speed_mph": 35, "speed_limit_mph": 35,
+     "distance_to_conflict_ft": 260, "had_right_of_way": true, "visibility": "good", "evasive_action_taken": false}
+  ],
+  "actions": [
+    {"id": "a1", "party_id": "A", "code": "IMPROPER_LEFT_TURN",
+     "description": "Began a permissive left turn with oncoming traffic about 5 seconds away.",
+     "evidence_ids": ["e1", "e2"], "evidence_confidence": 0.9, "causation": {"initiated_chain": true}}
+  ],
+  "evidence": [
+    {"id": "e1", "kind": "video", "source": "Gas station CCTV", "summary": "A starts turn as B approaches; no brake lights from B before impact.", "reliability": 0.85},
+    {"id": "e2", "kind": "police_report", "source": "Police report", "summary": "A cited for failure to yield on left turn; no skid marks from B.", "reliability": 0.8}
+  ],
+  "conflicts": []
+}
